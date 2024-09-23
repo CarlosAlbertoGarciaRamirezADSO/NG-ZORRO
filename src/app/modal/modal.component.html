@@ -1,0 +1,6 @@
+
+<nz-modal [nzWidth]="500" [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <ng-content></ng-content>
+    </ng-container>
+</nz-modal>

@@ -1,0 +1,25 @@
+<nz-table #basicTable [nzFrontPagination]="false"[nzData]="datos_aux" >
+    <thead>
+      <tr>
+        <th *ngFor="let column of configuracion.columns" >{{ column.label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let dato of datos_aux">
+          <td *ngFor="let column of configuracion.columns" class="td_data">
+            <ng-container *ngIf="column.type === 'button'">
+              <span nz-icon 
+              [nzType]="column.icon"
+              nzTheme="outline" 
+              (click)="Edit(dato, column.key)"></span>
+            </ng-container>
+            <ng-container *ngIf="column.type === 'text'">
+              {{ dato[column.key] }}
+            </ng-container>
+          </td>        
+      </tr> 
+      </tbody>
+    
+  </nz-table>
+  <nz-pagination (nzPageIndexChange)="newPage($event)" [nzPageSize]="cantidad_producto_mostrados" [nzPageIndex]="paginaActual" [nzTotal]="users.length" ></nz-pagination>
+  
